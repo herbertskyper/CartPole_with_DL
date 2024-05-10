@@ -16,7 +16,9 @@ conda activate envname
 python CartPole.py
 ```
 以运行游戏，支持手动和自动两种模式，自动模式在1000个step后自动结束
+
 右上角有个音乐图标，点击可以关闭音乐
+
 建议在linux下游玩，windows未测试
 ### 注意
 先用 train_nn.py 训练神经网络，之后再运行 CartPole.py 以开始游玩，否则无法使用自动档
