@@ -9,7 +9,7 @@ Cartpole游戏通关，以强化学习方式实现
 conda env create -f environment.yml
 conda activate envname
 ```
-或者在python3.9之下安装pyqt5,torch==1.12.0即可
+或者在python3.9之下安装pyqt5,pygame,gym,torch==1.12.0即可
 
 之后在终端输入
 ```
