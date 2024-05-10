@@ -20,3 +20,7 @@ python CartPole.py
 建议在linux下游玩，windows未测试
 ### 注意
 先用 train_nn.py 训练神经网络，之后再运行 CartPole.py 以开始游玩，否则无法使用自动档
+
+
+### 界面展示
+![Invalid Image](resources/menu_show.png)
