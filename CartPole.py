@@ -5,17 +5,23 @@ import time
 import random
 import numpy as np
 import torch  
+import os
 
 from MLP import CartPolePolicy
 
 import tkinter as tk
 from tkinter import messagebox,ttk
 
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtGui import QFont,QIcon
+from PyQt5.QtCore import Qt,QUrl,QFileInfo
+from Ui_window import Ui_MainWindow 
+
 def start_manual_mode():
-    # 在这里启动手动模式
-    messagebox.showinfo("Mode", "手动模式已启动")
     pygame.init() 
-    pygame.display.set_mode((800, 600))
+    pygame.display.set_mode((600, 400))
     
     env = gym.make(id='CartPole-v1',render_mode='human')
     state, _ =env.reset()
@@ -32,7 +38,7 @@ def start_manual_mode():
     print(f"pole_speed: {pole_speed:.2f}")
     
     # 创建一个窗口
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((600, 400))
 
     # 创建一个字体对象
     font = pygame.font.Font(None, 36)
@@ -44,7 +50,7 @@ def start_manual_mode():
 
         # 将Surface对象绘制到屏幕上
         screen.fill((0, 0, 0))
-        screen.blit(text, (200, 300))
+        screen.blit(text, (150, 200))
 
         # 更新屏幕
         pygame.display.flip()
@@ -97,10 +103,13 @@ def start_manual_mode():
     env.close()
 
 def start_auto_mode():
+    # self.hide()
+    if not os.path.exists("CartPolePolicy.pth"):
+        print("模型不存在，请重新选择！")
+        return 0
     # 在这里启动自动模式
-    messagebox.showinfo("Mode", "自动模式已启动")
     pygame.init() 
-    pygame.display.set_mode((800, 600))
+    pygame.display.set_mode((600, 400))
     
     env = gym.make(id='CartPole-v1',render_mode='human')
     state, _ =env.reset()
@@ -117,7 +126,7 @@ def start_auto_mode():
     print(f"pole_speed: {pole_speed:.2f}")
     
     # 创建一个窗口
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((600, 400))
 
     # 创建一个字体对象
     font = pygame.font.Font(None, 36)
@@ -129,7 +138,7 @@ def start_auto_mode():
 
         # 将Surface对象绘制到屏幕上
         screen.fill((0, 0, 0))
-        screen.blit(text, (200, 300))
+        screen.blit(text, (150, 200))
 
         # 更新屏幕
         pygame.display.flip()
@@ -170,30 +179,85 @@ def start_auto_mode():
     else:
         print(f"Succeeded in {step} steps in {game_time:.2f} seconds")
     env.close()
+    
+    return 1
+    
+    # self.show()
 
 
-if __name__ == '__main__':
-    root = tk.Tk()
-    root.title("CartPole游戏")
+class MyWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.setWindowTitle("CartPole Game Menu")
+        
+        self.pushButton_auto.clicked.connect(self.start_auto_mode_entry)
+        self.pushButton_man.clicked.connect(self.start_manual_mode_entry)
+        
+        self.player = QMediaPlayer()
+        self.play_flag=1
+        music_file_info = QFileInfo("resources/music.mp3")
+        music_file_url = QUrl.fromLocalFile(music_file_info.absoluteFilePath())
+        self.player.setMedia(QMediaContent(music_file_url))
+        self.playMusic()
 
-    # 加载背景图片
-    bg_image = tk.PhotoImage(file="background.png")  # 请替换为你的图片文件路径
+        self.pushButton_music.clicked.connect(self.playMusic)
+        
+        self.pushButton_back.clicked.connect(self.close)
+        
+    def close(self):
+        sys.exit(app.exec_())
+    
+    def playMusic(self):
+        if(self.play_flag==1):
+            self.pushButton_music.setIcon(QIcon('./resources/music.gif'))
+            self.player.play()
+            self.play_flag=0
+        else:
+            self.pushButton_music.setIcon(QIcon('./resources/music_off.png'))
+            self.player.pause()
+            self.play_flag=1
+        
+    def start_auto_mode_entry(self):
+        self.label_title.setText('自动模式已启动')
+        self.label_title.setFont(QFont("Roman times", 30, QFont.Bold))
+        self.label_title.setAlignment(Qt.AlignCenter)
+        self.label_title.show()
+        QApplication.processEvents()
+        for i in range(100):
+            self.setWindowOpacity(1-i/100) #设置透明度
+            time.sleep(0.02)
+            QApplication.processEvents()
+        self.hide()
+        if(not start_auto_mode()):
+            self.label_title.setText('未发现模型，请先进行训练！')
+            self.label_title.setFont(QFont("Roman times", 40, QFont.Bold))
+            self.label_title.setAlignment(Qt.AlignCenter)
+            self.label_title.show()
+            QApplication.processEvents()
+        self.setWindowOpacity(1)
+        QApplication.processEvents()
+        self.show()
 
-    # 创建一个用于显示背景图片的Label
-    bg_label = tk.Label(root, image=bg_image)
-    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+    def start_manual_mode_entry(self):
+        self.label_title.setText('手动模式已启动')
+        self.label_title.setFont(QFont("Roman times", 30, QFont.Bold))
+        self.label_title.setAlignment(Qt.AlignCenter)
+        self.label_title.show()
+        QApplication.processEvents()
+        for i in range(100):
+            self.setWindowOpacity(1-i/100) #设置透明度
+            time.sleep(0.02)
+            QApplication.processEvents()
+        self.hide()
+        start_manual_mode()
+        self.setWindowOpacity(1)
+        QApplication.processEvents()
+        self.show()
 
-    # 设置窗口大小
-    root.geometry("300x200")
 
-    # 使用ttk库来创建更现代的按钮
-    style = ttk.Style()
-    style.configure("TButton", font=("Arial", 20), padding=10)
-
-    manual_button = ttk.Button(root, text="手动模式", command=start_manual_mode)
-    manual_button.pack(side="left", padx=20, pady=20)
-
-    auto_button = ttk.Button(root, text="自动模式", command=start_auto_mode)
-    auto_button.pack(side="right", padx=20, pady=20)
-
-    root.mainloop()    
+if __name__ == '__main__': 
+    app = QApplication(sys.argv) 
+    myWindow = MyWindow() 
+    myWindow.show()
+    sys.exit(app.exec_())

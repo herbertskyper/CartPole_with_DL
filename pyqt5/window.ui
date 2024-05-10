@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-image: url(:/resources/background.png);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <widget class="QLabel" name="label_author">
+      <property name="maximumSize">
+       <size>
+        <width>500</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(245, 194, 17,200), stop:1 rgba(224, 121, 16,200));
+	border-radius:25px;
+	border:none
+}</string>
+      </property>
+      <property name="text">
+       <string>Made by Skyper</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QFrame" name="frame_theme">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame{
+	border:none
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_title">
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>58</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(153, 193, 241,200), stop:1 rgba(237, 51, 59,200));
+	border-radius:25px;
+}</string>
+         </property>
+         <property name="text">
+          <string>CarPole Game</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton_man">
+      <property name="maximumSize">
+       <size>
+        <width>500</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 0, 0, 200), stop:1 rgba(0, 255, 0, 200));
+    border:none;
+    height:100px;
+    border-radius:25px;
+}
+QPushButton:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(141, 228, 226,210), stop:1 rgba(0, 255, 0, 210));
+}</string>
+      </property>
+      <property name="text">
+       <string>手动挡</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_auto">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>500</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Umpush</family>
+        <pointsize>25</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 0, 0, 200), stop:1 rgba(0, 255, 0, 200));
+    border:none;
+    height:100px;
+    border-radius:25px;
+}
+QPushButton:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(141, 228, 226,210), stop:1 rgba(0, 255, 0, 210));
+}</string>
+      </property>
+      <property name="text">
+       <string>自动挡</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>16</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QFrame" name="frame_2">
+      <property name="styleSheet">
+       <string notr="true">QFrame{
+	border:none
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="pushButton_music">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>10</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="background.qrc">
+         <normaloff>:/resources/music_off.png</normaloff>
+         <normalon>:/resources/music.gif</normalon>
+         <activeoff>:/resources/music_off.png</activeoff>
+         <activeon>:/resources/music.gif</activeon>
+         <selectedoff>:/resources/music_off.png</selectedoff>
+         <selectedon>:/resources/music.gif</selectedon>:/resources/music_off.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="1" alignment="Qt::AlignHCenter">
+     <widget class="QPushButton" name="pushButton_back">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 0, 0, 200), stop:1 rgba(0, 255, 0, 200));
+    border:none;
+    height:50px;
+    border-radius:25px;
+}
+QPushButton:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 rgba(141, 228, 226,210), stop:1 rgba(0, 255, 0, 210));
+}</string>
+      </property>
+      <property name="text">
+       <string>退出</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1600</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="background.qrc"/>
+ </resources>
+ <connections/>
+</ui>

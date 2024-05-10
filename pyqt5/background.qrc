@@ -1,0 +1,7 @@
+<RCC>
+  <qresource>
+    <file>resources/music_off.png</file>
+    <file>resources/background.png</file>
+    <file>resources/music.gif</file>
+  </qresource>
+</RCC>

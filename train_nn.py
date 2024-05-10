@@ -9,8 +9,8 @@ import time
 
 pygame.init() 
 env = gym.make(id='CartPole-v1')
-# env.reset(seed=543)
-# torch.manual_seed(543)
+env.reset(seed=543)
+torch.manual_seed(543)
     
 policy=CartPolePolicy()
 optimizer = torch.optim.Adam(policy.parameters(), lr=0.01)
